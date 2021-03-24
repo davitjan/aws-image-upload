@@ -1,0 +1,9 @@
+C:\_Workspace\aws-image-upload\src\main\java\com\davitjan\awsimageupload\profile\UserProfile.java
+C:\_Workspace\aws-image-upload\src\main\java\com\davitjan\awsimageupload\buckets\BucketName.java
+C:\_Workspace\aws-image-upload\src\main\java\com\davitjan\awsimageupload\datastore\FakeUserProfileDataStore.java
+C:\_Workspace\aws-image-upload\src\main\java\com\davitjan\awsimageupload\filestore\FileStore.java
+C:\_Workspace\aws-image-upload\src\main\java\com\davitjan\awsimageupload\config\AmazonConfig.java
+C:\_Workspace\aws-image-upload\src\main\java\com\davitjan\awsimageupload\profile\UserProfileController.java
+C:\_Workspace\aws-image-upload\src\main\java\com\davitjan\awsimageupload\profile\UserProfileDataAccessService.java
+C:\_Workspace\aws-image-upload\src\main\java\com\davitjan\awsimageupload\Main.java
+C:\_Workspace\aws-image-upload\src\main\java\com\davitjan\awsimageupload\profile\UserProfileService.java

@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: com.davitjan.awsimageupload.MainTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.613 s <<< FAILURE! - in com.davitjan.awsimageupload.MainTests
+contextLoads  Time elapsed: 0.01 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'fileStore' defined in file [C:\_Workspace\aws-image-upload\target\classes\com\davitjan\awsimageupload\filestore\FileStore.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.amazonaws.services.s3.AmazonS3' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.amazonaws.services.s3.AmazonS3' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+

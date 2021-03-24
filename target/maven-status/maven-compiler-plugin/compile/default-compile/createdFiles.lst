@@ -1,0 +1,9 @@
+com\davitjan\awsimageupload\profile\UserProfileDataAccessService.class
+com\davitjan\awsimageupload\config\AmazonConfig.class
+com\davitjan\awsimageupload\profile\UserProfileController.class
+com\davitjan\awsimageupload\profile\UserProfileService.class
+com\davitjan\awsimageupload\profile\UserProfile.class
+com\davitjan\awsimageupload\filestore\FileStore.class
+com\davitjan\awsimageupload\buckets\BucketName.class
+com\davitjan\awsimageupload\datastore\FakeUserProfileDataStore.class
+com\davitjan\awsimageupload\Main.class
