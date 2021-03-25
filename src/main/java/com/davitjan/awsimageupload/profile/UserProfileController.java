@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.davitjan.awsimageupload.buckets.BucketName;
+
 @RestController
 @RequestMapping("api/v1/user-profile")
 @CrossOrigin("*")
@@ -37,5 +39,10 @@ public class UserProfileController {
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public void uploadUserProfileImage(@PathVariable("userProfileId") UUID userProfileId, @RequestParam("file") MultipartFile file) {
 		userProfileService.uploadUserProfileImage(userProfileId, file);
+	}
+	
+	@GetMapping(path = "{userProfileId}/image/download")
+	public byte[] downloadProfileImage(@PathVariable("userProfileId") UUID userProfileId) {
+		return userProfileService.downloadUserProfileService(userProfileId);
 	}
 }

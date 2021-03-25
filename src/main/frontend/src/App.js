@@ -20,7 +20,9 @@ const UserProfiles = () => {
 	return userProfiles.map((userProfile, index) => {
 		return (
 			<div key={index}>
-				{/* TODO: profile image */}
+				{userProfile.userProfileId ? (
+					<img src={`http://localhost:8080/api/v1/user-profile/${userProfile.userProfileId}/image/download`} alt="" />
+				) : null}
 				<br />
 				<br />
 				<h1>{userProfile.username}</h1>

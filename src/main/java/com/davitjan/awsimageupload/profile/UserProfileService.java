@@ -40,12 +40,10 @@ public class UserProfileService {
 		if (!Arrays.asList(ContentType.IMAGE_BMP.getMimeType(), ContentType.IMAGE_GIF.getMimeType(),
 				ContentType.IMAGE_JPEG.getMimeType(), ContentType.IMAGE_PNG.getMimeType(), ContentType.IMAGE_SVG.getMimeType(),
 				ContentType.IMAGE_TIFF.getMimeType(), ContentType.IMAGE_WEBP.getMimeType()).contains(file.getContentType())) {
-			throw new IllegalStateException("File must be image!");
+			throw new IllegalStateException("File must be image! [" + file.getContentType() + "]");
 		}
 		// 3. The user exists in our database
-		UserProfile user = userProfileDataAccessService.getUserProfiles().stream()
-				.filter(userProfile -> userProfile.getUserProfileId().equals(userProfileId)).findFirst()
-				.orElseThrow(() -> new IllegalStateException("User profile " + userProfileId + " not found!"));
+		UserProfile user = getUserProfileOrThrow(userProfileId);
 		// 4. Grab some metadata from file if any
 		Map<String, String> metadata = new HashMap<>();
 		metadata.put("Content-Type", file.getContentType());
@@ -57,8 +55,27 @@ public class UserProfileService {
 
 		try {
 			fileStore.save(path, filename, Optional.of(metadata), file.getInputStream());
+			user.setUserProfileImageLink(filename);
 		} catch (IOException e) {
 			throw new IllegalStateException(e);
 		}
+	}
+
+	public byte[] downloadUserProfileService(UUID userProfileId) {
+		UserProfile user = getUserProfileOrThrow(userProfileId);
+		String path = String.format("%s/%s", 
+				BucketName.PROFILE_IMAGE.getBucketName(), 
+				user.getUserProfileId());
+		
+		return user.getUserProfileImageLink()
+				.map(key -> fileStore.download(path, key))
+				.orElse(new byte[0]);
+	}
+
+	private UserProfile getUserProfileOrThrow(UUID userProfileId) {
+		UserProfile user = userProfileDataAccessService.getUserProfiles().stream()
+				.filter(userProfile -> userProfile.getUserProfileId().equals(userProfileId)).findFirst()
+				.orElseThrow(() -> new IllegalStateException("User profile " + userProfileId + " not found!"));
+		return user;
 	}
 }
